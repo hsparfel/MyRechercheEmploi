@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pouillos.viergeapp">
+    package="com.pouillos.myrechercheemploi">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/icons8_sac_argent"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.pouillos.viergeapp.activities.AccueilActivity">
+        <activity android:name=".activities.AccueilActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,12 +17,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.pouillos.viergeapp.activities.afficher.AfficherDepenseActivity"
+        <activity android:name=".activities.afficher.AfficherSocieteActivity"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name="com.pouillos.viergeapp.activities.ajouter.AjouterCategorieDepenseActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name="com.pouillos.viergeapp.activities.afficher.AfficherListeDepenseActivity"
-            android:windowSoftInputMode="stateHidden"/>
+
     </application>
 
 </manifest>

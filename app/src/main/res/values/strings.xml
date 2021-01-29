@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ViergeApp</string>
+    <string name="app_name">My Recherche Emploi</string>
 
 
     <string name="home">Accueil</string>
@@ -9,7 +9,9 @@
     <string name="error">error</string>
 
     <string name="text_name">Nom</string>
-
+    <string name="text_adresse">Adresse</string>
+    <string name="text_cp">CP</string>
+    <string name="text_ville">Ville</string>
 
     <string name="text_my_datas">Mes Données</string>
 
