@@ -17,6 +17,8 @@
     <string name="text_cp">CP</string>
     <string name="text_ville">Ville</string>
 
+    <string name="text_detail">Detail</string>
+
     <string name="text_my_datas">Mes Données</string>
 
     <!-- Used in NavigationDrawer -->

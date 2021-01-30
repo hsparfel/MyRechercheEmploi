@@ -37,4 +37,13 @@ public enum TypeContact {
         }
         return listToReturn;
     }
+
+    public static TypeContact rechercheParNom(String nom){
+        for(TypeContact v : values()){
+            if( v.name.equals(nom)){
+                return v;
+            }
+        }
+        return null;
+    }
 }

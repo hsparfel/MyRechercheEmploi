@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -28,6 +29,7 @@ import com.pouillos.myrechercheemploi.enumeration.TypeContact;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -50,7 +52,7 @@ public class AfficherContactActivity extends NavDrawerActivity implements Serial
 
     Societe societeSelected;
     List<Societe> listSocietesBD;
-    ArrayAdapter adapterSociete;
+
     @BindView(R.id.selectSociete)
     AutoCompleteTextView selectedSociete;
     @BindView(R.id.listSocietes)
@@ -59,7 +61,7 @@ public class AfficherContactActivity extends NavDrawerActivity implements Serial
     @State
     TypeContact typeContactSelected;
     List<TypeContact> listTypeContactsBD;
-    ArrayAdapter adapterTypeContact;
+
     @BindView(R.id.selectTypeContact)
     AutoCompleteTextView selectedTypeContact;
     @BindView(R.id.listTypeContacts)
@@ -137,7 +139,9 @@ public class AfficherContactActivity extends NavDrawerActivity implements Serial
                     break;
                 }
             }
-            selectedSociete.setText(selectedSociete.getAdapter().getItem(position).toString(), false);
+            selectedSociete.setText(societeSelected.toString(),false);
+            typeContactSelected = currentContact.getTypeContact();
+            selectedTypeContact.setText(typeContactSelected.toString(),false);
         }
     }
 
@@ -159,6 +163,9 @@ public class AfficherContactActivity extends NavDrawerActivity implements Serial
             contact.setPrenom(prenomCapitale);
             contact.setTel(textTel.getText().toString());
             contact.setMail(textEmail.getText().toString());
+            contact.setSociete(societeSelected);
+            contact.setTypeContact(TypeContact.rechercheParNom(selectedTypeContact.getText().toString()));
+
             if (currentContact == null) {
                 contactDao.insert(contact);
             } else {
@@ -209,7 +216,7 @@ public class AfficherContactActivity extends NavDrawerActivity implements Serial
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        societeSelected = listSocietesBD.get(position);
+            societeSelected = listSocietesBD.get(position);
     }
 
     public class AsyncTaskRunner extends AsyncTask<Void, Integer, Void> {
@@ -218,6 +225,9 @@ public class AfficherContactActivity extends NavDrawerActivity implements Serial
             publishProgress(0);
             listSocietesBD = societeDao.loadAll();
             Collections.sort(listSocietesBD);
+            listTypeContactsBD = new ArrayList<TypeContact>();
+            listTypeContactsBD.addAll(new ArrayList<TypeContact>(Arrays.asList(TypeContact.values())));
+            listTypeContactsBD.remove(0);
             publishProgress(100);
             return null;
         }
@@ -225,6 +235,9 @@ public class AfficherContactActivity extends NavDrawerActivity implements Serial
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
         protected void onPostExecute(Void result) {
             progressBar.setVisibility(View.GONE);
+            if (listTypeContactsBD.size() !=0) {
+                buildDropdownMenu(listTypeContactsBD, AfficherContactActivity.this,selectedTypeContact);
+            }
             if (listSocietesBD.size() == 0) {
                 Snackbar.make(selectedSociete, "Pas de societes en BD", Snackbar.LENGTH_SHORT).setAnchorView(selectedSociete).show();
             } else {

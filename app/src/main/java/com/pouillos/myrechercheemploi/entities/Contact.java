@@ -20,7 +20,7 @@ import com.pouillos.myrechercheemploi.dao.SocieteDao;
 
 
 @Entity
-public class Contact {
+public class Contact implements Comparable<Contact>{
 
     @Id
     private Long id;
@@ -322,8 +322,14 @@ public class Contact {
         }
     }
 
+    @Override
+    public String toString() {
+        return nom+" "+prenom+" - "+this.getSociete().getNom()+" - "+this.getTypeContact().toString();
+    }
 
-
-
+    @Override
+    public int compareTo(Contact o) {
+        return this.nom.compareTo(o.nom);
+    }
 
 }

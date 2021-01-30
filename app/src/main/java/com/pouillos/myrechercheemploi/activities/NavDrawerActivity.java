@@ -28,8 +28,11 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.pouillos.myrechercheemploi.R;
+import com.pouillos.myrechercheemploi.activities.afficher.AfficherContactActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherListeContactsActivity;
+import com.pouillos.myrechercheemploi.activities.afficher.AfficherListeOpportunitesActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherListeSocietesActivity;
+import com.pouillos.myrechercheemploi.activities.afficher.AfficherOpportuniteActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherSocieteActivity;
 
 
@@ -40,6 +43,7 @@ import com.pouillos.myrechercheemploi.dao.DaoSession;
 import com.pouillos.myrechercheemploi.dao.OpportuniteDao;
 import com.pouillos.myrechercheemploi.dao.RdvDao;
 import com.pouillos.myrechercheemploi.dao.SocieteDao;
+import com.pouillos.myrechercheemploi.entities.Contact;
 import com.pouillos.myrechercheemploi.fragments.DatePickerFragment;
 import com.pouillos.myrechercheemploi.utils.DateUtils;
 
@@ -116,12 +120,21 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
                 ouvrirActiviteSuivante(NavDrawerActivity.this, AccueilActivity.class,true);
                 break;
 
-            case R.id.activity_main_drawer_add_depense:
+            case R.id.activity_main_drawer_add_societe:
                 //Toast.makeText(this, "à implementer", Toast.LENGTH_LONG).show();
-                //myProfilActivity = new Intent(NavDrawerActivity.this, AfficherContactActivity.class);
-                //startActivity(myProfilActivity);
+                myProfilActivity = new Intent(NavDrawerActivity.this, AfficherSocieteActivity.class);
+                startActivity(myProfilActivity);
                 break;
-
+            case R.id.activity_main_drawer_add_contact:
+                //Toast.makeText(this, "à implementer", Toast.LENGTH_LONG).show();
+                myProfilActivity = new Intent(NavDrawerActivity.this, AfficherContactActivity.class);
+                startActivity(myProfilActivity);
+                break;
+            case R.id.activity_main_drawer_add_opportunite:
+                //Toast.makeText(this, "à implementer", Toast.LENGTH_LONG).show();
+                myProfilActivity = new Intent(NavDrawerActivity.this, AfficherOpportuniteActivity.class);
+                startActivity(myProfilActivity);
+                break;
             case R.id.activity_main_drawer_lister_societes:
                 myProfilActivity = new Intent(NavDrawerActivity.this, AfficherListeSocietesActivity.class);
                 startActivity(myProfilActivity);
@@ -132,15 +145,12 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
                 startActivity(myProfilActivity);
                 break;
 
-            case R.id.activity_main_drawer_lister_budget_annuel:
-
-                break;
-
-            case R.id.activity_main_drawer_add_categorie_depense:
-                //Toast.makeText(this, "à implementer", Toast.LENGTH_LONG).show();
-                myProfilActivity = new Intent(NavDrawerActivity.this, AfficherSocieteActivity.class);
+            case R.id.activity_main_drawer_lister_opportunites:
+                myProfilActivity = new Intent(NavDrawerActivity.this, AfficherListeOpportunitesActivity.class);
                 startActivity(myProfilActivity);
                 break;
+
+
 
             case R.id.activity_main_drawer_raz:
                 //Toast.makeText(this, "à implementer", Toast.LENGTH_LONG).show();
@@ -157,7 +167,7 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
     }
 
     protected void raz() {
-
+        contactDao.deleteAll();
     }
 
     @Override

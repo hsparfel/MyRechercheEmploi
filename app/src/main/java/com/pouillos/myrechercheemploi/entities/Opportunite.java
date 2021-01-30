@@ -18,7 +18,7 @@ import com.pouillos.myrechercheemploi.dao.OpportuniteDao;
 import com.pouillos.myrechercheemploi.dao.SocieteDao;
 
 @Entity
-public class Opportunite {
+public class Opportunite implements Comparable<Opportunite>{
 
     @Id
     private Long id;
@@ -28,12 +28,6 @@ public class Opportunite {
 
     @Convert(converter = AvancementOpportuniteConverter.class, columnType = Long.class)
     private AvancementOpportunite avancementOpportunite;
-
-    @NotNull
-    private long societeId;
-
-    @ToOne(joinProperty = "societeId")
-    private Societe societe;
 
     @NotNull
     private long contactId;
@@ -49,13 +43,12 @@ public class Opportunite {
     @Generated(hash = 435491102)
     private transient OpportuniteDao myDao;
 
-    @Generated(hash = 907147012)
+    @Generated(hash = 1170772916)
     public Opportunite(Long id, @NotNull String detail, AvancementOpportunite avancementOpportunite,
-            long societeId, long contactId) {
+            long contactId) {
         this.id = id;
         this.detail = detail;
         this.avancementOpportunite = avancementOpportunite;
-        this.societeId = societeId;
         this.contactId = contactId;
     }
 
@@ -64,9 +57,6 @@ public class Opportunite {
     }
 
 
-
-    @Generated(hash = 231511371)
-    private transient Long societe__resolvedKey;
 
     @Generated(hash = 321829790)
     private transient Long contact__resolvedKey;
@@ -95,53 +85,12 @@ public class Opportunite {
         this.avancementOpportunite = avancementOpportunite;
     }
 
-    public long getSocieteId() {
-        return this.societeId;
-    }
-
-    public void setSocieteId(long societeId) {
-        this.societeId = societeId;
-    }
-
     public long getContactId() {
         return this.contactId;
     }
 
     public void setContactId(long contactId) {
         this.contactId = contactId;
-    }
-
-    /** To-one relationship, resolved on first access. */
-    @Generated(hash = 860249786)
-    public Societe getSociete() {
-        long __key = this.societeId;
-        if (societe__resolvedKey == null || !societe__resolvedKey.equals(__key)) {
-            final DaoSession daoSession = this.daoSession;
-            if (daoSession == null) {
-                throw new DaoException("Entity is detached from DAO context");
-            }
-            SocieteDao targetDao = daoSession.getSocieteDao();
-            Societe societeNew = targetDao.load(__key);
-            synchronized (this) {
-                societe = societeNew;
-                societe__resolvedKey = __key;
-            }
-        }
-        return societe;
-    }
-
-    /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 1330150812)
-    public void setSociete(@NotNull Societe societe) {
-        if (societe == null) {
-            throw new DaoException(
-                    "To-one property 'societeId' has not-null constraint; cannot set to-one to null");
-        }
-        synchronized (this) {
-            this.societe = societe;
-            societeId = societe.getId();
-            societe__resolvedKey = societeId;
-        }
     }
 
     /** To-one relationship, resolved on first access. */
@@ -242,7 +191,15 @@ public class Opportunite {
         }
     }
 
+    @Override
+    public String toString() {
+        return this.getContact().getNom()+" - "+this.getContact().getSociete().getNom()+" - "+this.getDetail();
+    }
 
+    @Override
+    public int compareTo(Opportunite o) {
+        return this.detail.compareTo(o.detail);
+    }
 
 
 

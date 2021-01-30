@@ -8,10 +8,11 @@ public enum AvancementOpportunite {
 
     //Objets directement construits
     Default(0,"?"),
-    CV(1,"CV"),
-    Entretien(2,"Entretien"),
-    EnAttente(3,"En Attente"),
-    Refuse(4,"Refuse");
+    Presentation(1,"Presentation"),
+    CV(2,"CV"),
+    Entretien(3,"Entretien"),
+    EnAttente(4,"En Attente"),
+    Refuse(5,"Refuse");
 
     public long id;
     public String name = "";
@@ -35,5 +36,14 @@ public enum AvancementOpportunite {
             }
         }
         return listToReturn;
+    }
+
+    public static AvancementOpportunite rechercheParNom(String nom){
+        for(AvancementOpportunite v : values()){
+            if( v.name.equals(nom)){
+                return v;
+            }
+        }
+        return null;
     }
 }

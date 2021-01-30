@@ -38,4 +38,13 @@ public enum AvancementSociete {
         }
         return listToReturn;
     }
+
+    public static AvancementSociete rechercheParNom(String nom){
+        for(AvancementSociete v : values()){
+            if( v.name.equals(nom)){
+                return v;
+            }
+        }
+        return null;
+    }
 }

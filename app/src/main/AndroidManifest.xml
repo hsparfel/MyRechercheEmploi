@@ -27,6 +27,11 @@
         <activity android:name=".activities.afficher.AfficherListeContactsActivity"
             android:windowSoftInputMode="stateHidden"/>
 
+        <activity android:name=".activities.afficher.AfficherOpportuniteActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activities.afficher.AfficherListeOpportunitesActivity"
+            android:windowSoftInputMode="stateHidden"/>
+
     </application>
 
 </manifest>

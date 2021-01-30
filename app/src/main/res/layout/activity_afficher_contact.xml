@@ -89,29 +89,33 @@
                 android:id="@+id/listSocietes"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <AutoCompleteTextView
-                android:id="@+id/selectSociete"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:hint="@string/select"
-                android:inputType="none" />
+                android:layout_marginLeft="90dip"
+                android:layout_marginRight="90dip">
+
+                <AutoCompleteTextView
+                    android:id="@+id/selectSociete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="Societe"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/listTypeContacts"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dip"
+                android:layout_marginRight="90dip">
 
                 <AutoCompleteTextView
                     android:id="@+id/selectTypeContact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="false"
-                    android:hint="@string/select"
+                    android:hint="Type"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
