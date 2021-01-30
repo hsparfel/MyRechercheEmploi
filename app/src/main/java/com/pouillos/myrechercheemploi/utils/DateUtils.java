@@ -125,6 +125,20 @@ public class DateUtils {
         return dateMaj;
     }
 
+    public static String ecrireJusteHeure(Date date) {
+        String pattern = "HH";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String dateMaj = simpleDateFormat.format(date);
+        return dateMaj;
+    }
+
+    public static String ecrireJusteMinute(Date date) {
+        String pattern = "mm";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String dateMaj = simpleDateFormat.format(date);
+        return dateMaj;
+    }
+
     public static String ecrireDateHeure(Date date) {
         String pattern = "dd/MM/yyyy HH:mm";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);

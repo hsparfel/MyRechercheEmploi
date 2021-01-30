@@ -20,7 +20,7 @@ import com.pouillos.myrechercheemploi.dao.ContactDao;
 import com.pouillos.myrechercheemploi.dao.RdvDao;
 
 @Entity
-public class Rdv {
+public class Rdv implements Comparable<Rdv>{
 
     @Id
     private Long id;
@@ -205,6 +205,14 @@ public class Rdv {
         }
     }
 
-    
+    @Override
+    public String toString() {
+        return this.getContact().getNom()+" - "+this.getContact().getSociete().getNom()+" - "+this.getDateString();
+    }
+
+    @Override
+    public int compareTo(Rdv o) {
+        return this.date.compareTo(o.date);
+    }
 
 }

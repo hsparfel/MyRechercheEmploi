@@ -31,8 +31,10 @@ import com.pouillos.myrechercheemploi.R;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherContactActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherListeContactsActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherListeOpportunitesActivity;
+import com.pouillos.myrechercheemploi.activities.afficher.AfficherListeRdvsActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherListeSocietesActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherOpportuniteActivity;
+import com.pouillos.myrechercheemploi.activities.afficher.AfficherRdvActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherSocieteActivity;
 
 
@@ -135,6 +137,11 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
                 myProfilActivity = new Intent(NavDrawerActivity.this, AfficherOpportuniteActivity.class);
                 startActivity(myProfilActivity);
                 break;
+            case R.id.activity_main_drawer_add_rdv:
+                //Toast.makeText(this, "à implementer", Toast.LENGTH_LONG).show();
+                myProfilActivity = new Intent(NavDrawerActivity.this, AfficherRdvActivity.class);
+                startActivity(myProfilActivity);
+                break;
             case R.id.activity_main_drawer_lister_societes:
                 myProfilActivity = new Intent(NavDrawerActivity.this, AfficherListeSocietesActivity.class);
                 startActivity(myProfilActivity);
@@ -149,7 +156,10 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
                 myProfilActivity = new Intent(NavDrawerActivity.this, AfficherListeOpportunitesActivity.class);
                 startActivity(myProfilActivity);
                 break;
-
+            case R.id.activity_main_drawer_lister_rdvs:
+                myProfilActivity = new Intent(NavDrawerActivity.this, AfficherListeRdvsActivity.class);
+                startActivity(myProfilActivity);
+                break;
 
 
             case R.id.activity_main_drawer_raz:

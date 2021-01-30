@@ -20,6 +20,10 @@
             android:id="@+id/activity_main_drawer_add_opportunite"
             android:icon="@drawable/icons8_categories"
             android:title="+ Opportunite" />
+        <item
+            android:id="@+id/activity_main_drawer_add_rdv"
+            android:icon="@drawable/icons8_categories"
+            android:title="+ Rdv" />
 
     </group>
 
@@ -40,6 +44,10 @@
                     android:id="@+id/activity_main_drawer_lister_opportunites"
                     android:icon="@drawable/icons8_liste"
                     android:title="Opportunites" />
+                <item
+                    android:id="@+id/activity_main_drawer_lister_rdvs"
+                    android:icon="@drawable/icons8_liste"
+                    android:title="Rdvs" />
 
             </group>
         </menu>

@@ -32,6 +32,11 @@
         <activity android:name=".activities.afficher.AfficherListeOpportunitesActivity"
             android:windowSoftInputMode="stateHidden"/>
 
+        <activity android:name=".activities.afficher.AfficherRdvActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activities.afficher.AfficherListeRdvsActivity"
+            android:windowSoftInputMode="stateHidden"/>
+
     </application>
 
 </manifest>

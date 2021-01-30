@@ -35,4 +35,13 @@ public enum TypeRdv {
         }
         return listToReturn;
     }
+
+    public static TypeRdv rechercheParNom(String nom){
+        for(TypeRdv v : values()){
+            if( v.name.equals(nom)){
+                return v;
+            }
+        }
+        return null;
+    }
 }
