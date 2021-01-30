@@ -10,19 +10,19 @@
             android:title="@string/home" />
         <item
             android:id="@+id/activity_main_drawer_add_societe"
-            android:icon="@drawable/icons8_argent"
+            android:icon="@drawable/outline_business_black_24dp"
             android:title="+ Societe" />
         <item
             android:id="@+id/activity_main_drawer_add_contact"
-            android:icon="@drawable/icons8_categories"
+            android:icon="@drawable/outline_face_black_24dp"
             android:title="+ Contact" />
         <item
             android:id="@+id/activity_main_drawer_add_opportunite"
-            android:icon="@drawable/icons8_categories"
+            android:icon="@drawable/outline_psychology_black_24dp"
             android:title="+ Opportunite" />
         <item
             android:id="@+id/activity_main_drawer_add_rdv"
-            android:icon="@drawable/icons8_categories"
+            android:icon="@drawable/icons8_calendrier"
             android:title="+ Rdv" />
 
     </group>

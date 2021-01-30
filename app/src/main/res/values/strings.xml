@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Recherche Emploi</string>
+    <string name="app_name">Search Job</string>
 
 
     <string name="home">Accueil</string>
@@ -7,7 +7,6 @@
     <string name="format_date">dd/MM/yy</string>
 
     <string name="error">error</string>
-    <string name="select">Sélectionner</string>
 
     <string name="text_name">Nom</string>
     <string name="text_prenom">Prenom</string>
