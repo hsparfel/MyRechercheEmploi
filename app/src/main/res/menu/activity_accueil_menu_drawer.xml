@@ -25,9 +25,9 @@
             <group android:checkableBehavior="single">
 
                 <item
-                android:id="@+id/activity_main_drawer_lister_depenses"
+                android:id="@+id/activity_main_drawer_lister_societes"
                 android:icon="@drawable/icons8_liste"
-                android:title="Lister Depenses" />
+                android:title="Lister Societes" />
                 <item
                     android:id="@+id/activity_main_drawer_lister_budget_mensuel"
                     android:icon="@drawable/icons8_liste"

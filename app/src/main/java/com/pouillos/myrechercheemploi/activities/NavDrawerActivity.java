@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +28,7 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.pouillos.myrechercheemploi.R;
+import com.pouillos.myrechercheemploi.activities.afficher.AfficherListeSocietesActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherSocieteActivity;
 
 
@@ -117,9 +121,9 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
                 //startActivity(myProfilActivity);
                 break;
 
-            case R.id.activity_main_drawer_lister_depenses:
-               // myProfilActivity = new Intent(NavDrawerActivity.this, AfficherListeDepenseActivity.class);
-               // startActivity(myProfilActivity);
+            case R.id.activity_main_drawer_lister_societes:
+                myProfilActivity = new Intent(NavDrawerActivity.this, AfficherListeSocietesActivity.class);
+                startActivity(myProfilActivity);
                 break;
 
             case R.id.activity_main_drawer_lister_budget_mensuel:
@@ -397,5 +401,19 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
         Database db = helper.getWritableDb();
         DaoMaster daoMaster = new DaoMaster(db);
         daoSession = daoMaster.newSession();
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        View view = getCurrentFocus();
+        if (view != null && (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) && view instanceof EditText && !view.getClass().getName().startsWith("android.webkit.")) {
+            int scrcoords[] = new int[2];
+            view.getLocationOnScreen(scrcoords);
+            float x = ev.getRawX() + view.getLeft() - scrcoords[0];
+            float y = ev.getRawY() + view.getTop() - scrcoords[1];
+            if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
+                ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }

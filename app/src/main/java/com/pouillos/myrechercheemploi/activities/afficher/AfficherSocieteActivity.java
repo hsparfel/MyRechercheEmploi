@@ -1,5 +1,6 @@
 package com.pouillos.myrechercheemploi.activities.afficher;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.chip.Chip;
@@ -13,6 +14,10 @@ import com.pouillos.myrechercheemploi.activities.NavDrawerActivity;
 import com.pouillos.myrechercheemploi.entities.Societe;
 import com.pouillos.myrechercheemploi.enumeration.TypeSociete;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,8 +27,6 @@ public class AfficherSocieteActivity extends NavDrawerActivity {
 
     @BindView(R.id.fabSave)
     FloatingActionButton fabSave;
-    @BindView(R.id.fabModify)
-    FloatingActionButton fabModify;
     @BindView(R.id.fabDelete)
     FloatingActionButton fabDelete;
 
@@ -71,7 +74,7 @@ public class AfficherSocieteActivity extends NavDrawerActivity {
     @BindView(R.id.chipTestTechnique)
     Chip chipTestTechnique;
 
-
+    Societe currentSociete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +87,52 @@ public class AfficherSocieteActivity extends NavDrawerActivity {
         this.configureToolBar();
         this.configureDrawerLayout();
         this.configureNavigationView();
+
+        fabDelete.hide();
+
+        traiterIntent();
     }
 
+    private void traiterIntent() {
+        Intent intent = getIntent();
+        if (intent.hasExtra("societeId")) {
+            fabDelete.show();
+            Long societeId = intent.getLongExtra("societeId", 0);
+            currentSociete = societeDao.load(societeId);
+
+            textName.setText(currentSociete.getNom());
+            if (currentSociete.getAdresse() != null && !currentSociete.getAdresse().equalsIgnoreCase("")) {
+                textAdresse.setText(currentSociete.getAdresse());
+            }
+            if (currentSociete.getCp() != null && !currentSociete.getCp().equalsIgnoreCase("")) {
+                textCp.setText(currentSociete.getCp());
+            }
+            if (currentSociete.getVille() != null && !currentSociete.getVille().equalsIgnoreCase("")) {
+                textVille.setText(currentSociete.getVille());
+            }
+            if (currentSociete.getTypeSociete() == TypeSociete.Esn) {
+                chipEsn.setChecked(true);
+                typeSociete = TypeSociete.Esn;
+            }
+            if (currentSociete.getTypeSociete() == TypeSociete.Client) {
+                chipClient.setChecked(true);
+                typeSociete = TypeSociete.Client;
+            }
+            chipPremierContact.setChecked(currentSociete.getHasPremierContact());
+            hasPremierContact = currentSociete.getHasPremierContact();
+            chipEntretienRH.setChecked(currentSociete.getHasEntretienRh());
+            hasEntretienRh = currentSociete.getHasEntretienRh();
+            chipEntretienTechnique.setChecked(currentSociete.getHasEntretienTechnique());
+            hasEntretienTechnique = currentSociete.getHasEntretienTechnique();
+            chipEntretienManager.setChecked(currentSociete.getHasEntretienManager());
+            hasEntretienManager = currentSociete.getHasEntretienManager();
+            chipEntretienAffaire.setChecked(currentSociete.getHasEntretienAffaire());
+            hasEntretienAffaire = currentSociete.getHasEntretienAffaire();
+            chipTestTechnique.setChecked(currentSociete.getHasTestTechnique());
+            hasTestTechnique = currentSociete.getHasTestTechnique();
+        }
+    }
+    
     @OnClick(R.id.chipEsn)
     public void setChipEsnClick() {
         if (chipEsn.isChecked()) {
@@ -161,7 +208,11 @@ public class AfficherSocieteActivity extends NavDrawerActivity {
     @OnClick(R.id.fabSave)
     public void setFabSaveClick() {
         if (isFullRempli()) {
-            societe = new Societe();
+            if (currentSociete == null) {
+                societe = new Societe();
+            } else {
+                societe = currentSociete;
+            }
             societe.setTypeSociete(typeSociete);
             String nom = textName.getText().toString();
             String nomCapitale = nom.substring(0,1).toUpperCase()+nom.substring(1);
@@ -179,19 +230,22 @@ public class AfficherSocieteActivity extends NavDrawerActivity {
             societe.setHasEntretienManager(hasEntretienManager);
             societe.setHasEntretienAffaire(hasEntretienAffaire);
             societe.setHasTestTechnique(hasTestTechnique);
-            societeDao.insert(societe);
+            if (currentSociete == null) {
+                societeDao.insert(societe);
+            } else {
+                societeDao.update(societe);
+            }
+
             ouvrirActiviteSuivante(AfficherSocieteActivity.this, AccueilActivity.class,false);
         }
     }
 
-    @OnClick(R.id.fabModify)
-    public void setFabModifyClick() {
-        //todo
-    }
-
     @OnClick(R.id.fabDelete)
     public void setFabDeleteClick() {
-        //todo
+        if (currentSociete != null) {
+            societeDao.delete(currentSociete);
+        }
+        ouvrirActiviteSuivante(AfficherSocieteActivity.this, AccueilActivity.class,false);
     }
 
     private boolean isFullRempli() {
@@ -200,15 +254,26 @@ public class AfficherSocieteActivity extends NavDrawerActivity {
         if (!hasEntretienRh && !hasEntretienTechnique && !hasEntretienManager
                 && !hasEntretienAffaire && !hasPremierContact && !hasTestTechnique) {
             bool = false;
-            Snackbar.make(chipPremierContact, "Veuillez Selectionner un avancement", Snackbar.LENGTH_SHORT).setAnchorView(chipPremierContact).show();
+            Snackbar.make(chipPremierContact, "Veuillez Selectionner un avancement", Snackbar.LENGTH_SHORT).setAnchorView(layoutCp).show();
         }
         if (!chipEsn.isChecked() && !chipClient.isChecked()) {
             bool = false;
-            Snackbar.make(chipEsn, "Veuillez Selectionner un type de société", Snackbar.LENGTH_SHORT).setAnchorView(chipEsn).show();
+            Snackbar.make(chipEsn, "Veuillez Selectionner un type de société", Snackbar.LENGTH_SHORT).setAnchorView(chipEntretienManager).show();
         }
         if (!isFilled(textName)) {
             bool = false;
             layoutName.setError("Obligatoire");
+        }
+        if (!textCp.getText().toString().equalsIgnoreCase("") && !isValidZip(textCp)) {
+            bool = false;
+            Snackbar.make(textCp, "Saisir un CP valide", Snackbar.LENGTH_SHORT).setAnchorView(layoutVille).show();
+        }
+
+        if (!textAdresse.getText().toString().equalsIgnoreCase("") || !textCp.getText().toString().equalsIgnoreCase("") || !textVille.getText().toString().equalsIgnoreCase("")) {
+            if (textAdresse.getText().toString().equalsIgnoreCase("") || textCp.getText().toString().equalsIgnoreCase("") || textVille.getText().toString().equalsIgnoreCase("")) {
+                bool = false;
+                Snackbar.make(textCp, "Saisir une adresse complète ou vider", Snackbar.LENGTH_SHORT).setAnchorView(fabSave).show();
+            }
         }
         return bool;
     }

@@ -56,7 +56,7 @@
         android:layout_margin="16dip"
 
         app:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@drawable/outline_add_black_24dp"
+        app:srcCompat="@drawable/outline_add_business_black_24dp"
         app:tint="@android:color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -69,7 +69,7 @@
             android:layout_margin="16dip"
 
             app:backgroundTint="@color/colorPrimary"
-            app:srcCompat="@drawable/outline_add_black_24dp"
+            app:srcCompat="@drawable/outline_person_add_black_24dp"
             app:tint="@android:color/white" />
 
 

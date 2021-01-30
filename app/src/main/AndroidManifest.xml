@@ -19,6 +19,8 @@
 
         <activity android:name=".activities.afficher.AfficherSocieteActivity"
             android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activities.afficher.AfficherListeSocietesActivity"
+            android:windowSoftInputMode="stateHidden"/>
 
     </application>
 

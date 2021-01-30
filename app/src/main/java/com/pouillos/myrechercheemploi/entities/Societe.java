@@ -85,7 +85,7 @@ public class Societe implements Comparable<Societe> {
 
     @Override
     public String toString() {
-        return nom;
+        return nom+" - "+typeSociete;
     }
 
     @Override

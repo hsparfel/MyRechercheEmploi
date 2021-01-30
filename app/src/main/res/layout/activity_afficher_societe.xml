@@ -50,7 +50,7 @@
                 android:hint="@string/text_name"
                 android:minWidth="250dip"
                 app:errorEnabled="true"
-                app:startIconDrawable="@drawable/icons8_categories">
+                app:startIconDrawable="@drawable/outline_business_black_24dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textName"
@@ -103,6 +103,12 @@
                     app:singleSelection="false"
                     app:chipSpacingHorizontal="10dp">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipPremierContact"
                         style="@style/Widget.MaterialComponents.Chip.Entry"
@@ -130,6 +136,13 @@
                         android:text="Technique"
                         app:closeIconVisible="false" />
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipEntretienManager"
                         style="@style/Widget.MaterialComponents.Chip.Entry"
@@ -148,6 +161,8 @@
                         android:text="Affaire"
                         app:closeIconVisible="false" />
 
+
+
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipTestTechnique"
                         style="@style/Widget.MaterialComponents.Chip.Entry"
@@ -156,6 +171,8 @@
                         android:layout_gravity="center_horizontal"
                         android:text="Test Tech"
                         app:closeIconVisible="false" />
+
+                    </LinearLayout>
 
                 </com.google.android.material.chip.ChipGroup>
             </LinearLayout>
@@ -169,7 +186,7 @@
                 android:hint="@string/text_adresse"
                 android:minWidth="250dip"
                 app:errorEnabled="true"
-                app:startIconDrawable="@drawable/icons8_categories">
+                app:startIconDrawable="@drawable/outline_place_black_24dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textAdresse"
@@ -184,14 +201,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:hint="@string/text_cp"
-                android:minWidth="250dip"
+                android:minWidth="150dip"
                 app:errorEnabled="true"
-                app:startIconDrawable="@drawable/icons8_categories">
+                app:startIconDrawable="@drawable/outline_place_black_24dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textCp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="5"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -203,7 +222,7 @@
                 android:hint="@string/text_ville"
                 android:minWidth="250dip"
                 app:errorEnabled="true"
-                app:startIconDrawable="@drawable/icons8_categories">
+                app:startIconDrawable="@drawable/outline_place_black_24dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textVille"
@@ -211,20 +230,14 @@
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabSave"
-                style="@style/Widget.MaterialComponents.FloatingActionButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
-                android:layout_margin="16dip"
-
-                app:backgroundTint="@color/colorPrimary"
-                app:srcCompat="@drawable/outline_save_black_24dp"
-                app:tint="@android:color/white" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabModify"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -247,6 +260,7 @@
                 app:srcCompat="@drawable/outline_delete_black_24dp"
                 app:tint="@android:color/white" />
 
+            </LinearLayout>
         </LinearLayout>
 
 
