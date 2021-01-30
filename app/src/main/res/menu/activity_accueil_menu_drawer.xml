@@ -29,9 +29,9 @@
                 android:icon="@drawable/icons8_liste"
                 android:title="Lister Societes" />
                 <item
-                    android:id="@+id/activity_main_drawer_lister_budget_mensuel"
+                    android:id="@+id/activity_main_drawer_lister_contacts"
                     android:icon="@drawable/icons8_liste"
-                    android:title="Lister Budget Mensuel" />
+                    android:title="Lister Contacts" />
                 <item
                     android:id="@+id/activity_main_drawer_lister_budget_annuel"
                     android:icon="@drawable/icons8_liste"

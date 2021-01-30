@@ -7,8 +7,12 @@
     <string name="format_date">dd/MM/yy</string>
 
     <string name="error">error</string>
+    <string name="select">Sélectionner</string>
 
     <string name="text_name">Nom</string>
+    <string name="text_prenom">Prenom</string>
+    <string name="text_tel">Tel</string>
+    <string name="text_email">Email</string>
     <string name="text_adresse">Adresse</string>
     <string name="text_cp">CP</string>
     <string name="text_ville">Ville</string>

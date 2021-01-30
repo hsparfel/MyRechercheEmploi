@@ -15,6 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pouillos.myrechercheemploi.R;
 
 
+import com.pouillos.myrechercheemploi.activities.afficher.AfficherContactActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherSocieteActivity;
 import com.pouillos.myrechercheemploi.utils.DateUtils;
 
@@ -67,7 +68,7 @@ public class AccueilActivity extends NavDrawerActivity {
 
     @OnClick(R.id.fabAddContact)
     public void setFabAddContactClick() {
-        //ouvrirActiviteSuivante(this, AjouterContactActivity.class,false);
+        ouvrirActiviteSuivante(this, AfficherContactActivity.class,false);
     }
 
     private class AsyncTaskRunnerBD extends AsyncTask<Void, Integer, Void> {

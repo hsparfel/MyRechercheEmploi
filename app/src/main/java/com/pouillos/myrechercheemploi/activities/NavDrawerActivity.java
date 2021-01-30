@@ -28,6 +28,7 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.pouillos.myrechercheemploi.R;
+import com.pouillos.myrechercheemploi.activities.afficher.AfficherListeContactsActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherListeSocietesActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherSocieteActivity;
 
@@ -126,8 +127,9 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
                 startActivity(myProfilActivity);
                 break;
 
-            case R.id.activity_main_drawer_lister_budget_mensuel:
-
+            case R.id.activity_main_drawer_lister_contacts:
+                myProfilActivity = new Intent(NavDrawerActivity.this, AfficherListeContactsActivity.class);
+                startActivity(myProfilActivity);
                 break;
 
             case R.id.activity_main_drawer_lister_budget_annuel:
