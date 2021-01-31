@@ -37,6 +37,22 @@
         <activity android:name=".activities.afficher.AfficherListeRdvsActivity"
             android:windowSoftInputMode="stateHidden"/>
 
+        <activity android:name=".activities.exporter.ExporterDatasActivity"
+            android:windowSoftInputMode="stateHidden"/>
+
+        
+        <provider
+            android:authorities="com.pouillos.myrechercheemploi.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
     </application>
+    
+ 
 
 </manifest>

@@ -2,15 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto">
 <item
-    android:id="@+id/menu_activity_main_add_depense"
-    android:icon="@drawable/icons8_plus_white"
+    android:id="@+id/menu_activity_main_export_datas"
+    android:icon="@drawable/outline_send_and_archive_white_18dp"
     app:showAsAction="ifRoom"
-    android:title="Ajouter Depense">
+    android:title="Exporter Données"
+    >
 </item>
 
-    <item android:id="@+id/importEtablissement"
-
-        android:title="importer etablissement"
-        />
 
 </menu>

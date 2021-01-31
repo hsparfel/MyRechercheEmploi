@@ -1,0 +1,17 @@
+<paths>
+    <files-path
+        name="societes"
+        path="."/>
+    <files-path
+        name="contacts"
+        path="."/>
+    <files-path
+        name="opportunites"
+        path="."/>
+    <files-path
+        name="rdvs"
+        path="."/>
+    <files-path
+        name="tout"
+        path="."/>
+</paths>

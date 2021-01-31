@@ -38,6 +38,7 @@ import com.pouillos.myrechercheemploi.activities.afficher.AfficherRdvActivity;
 import com.pouillos.myrechercheemploi.activities.afficher.AfficherSocieteActivity;
 
 
+import com.pouillos.myrechercheemploi.activities.exporter.ExporterDatasActivity;
 import com.pouillos.myrechercheemploi.dao.ContactDao;
 import com.pouillos.myrechercheemploi.dao.DaoMaster;
 import com.pouillos.myrechercheemploi.dao.DaoSession;
@@ -189,16 +190,13 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
             /*case R.id.menu_activity_main_params:
                 Toast.makeText(this, "Il n'y a rien à paramétrer ici, passez votre chemin...", Toast.LENGTH_LONG).show();
                 return true;*/
-            case R.id.menu_activity_main_add_depense:
+            case R.id.menu_activity_main_export_datas:
                 //Toast.makeText(this, "Recherche indisponible, demandez plutôt l'avis de Google, c'est mieux et plus rapide.", Toast.LENGTH_LONG).show();
-               // myProfilActivity = new Intent(NavDrawerActivity.this, AfficherContactActivity.class);
-                //startActivity(myProfilActivity);
+                myProfilActivity = new Intent(NavDrawerActivity.this, ExporterDatasActivity.class);
+                startActivity(myProfilActivity);
                 return true;
 
-            case R.id.importEtablissement:
-              //  myProfilActivity = new Intent(NavDrawerActivity.this, ImportEtablissementActivity.class);
-              //  startActivity(myProfilActivity);
-                return true;
+
 
             default:
                 return super.onOptionsItemSelected(item);
