@@ -161,13 +161,6 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
                 myProfilActivity = new Intent(NavDrawerActivity.this, AfficherListeRdvsActivity.class);
                 startActivity(myProfilActivity);
                 break;
-
-
-            case R.id.activity_main_drawer_raz:
-                //Toast.makeText(this, "à implementer", Toast.LENGTH_LONG).show();
-                raz();
-                Toast.makeText(this, "RAZ done", Toast.LENGTH_LONG).show();
-                break;
             default:
                 break;
         }

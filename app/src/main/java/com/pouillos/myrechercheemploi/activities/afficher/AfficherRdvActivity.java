@@ -111,7 +111,7 @@ public class AfficherRdvActivity extends NavDrawerActivity implements Serializab
 
         fabDelete.hide();
 
-        traiterIntent();
+
 
         selectedContact.setOnItemClickListener(this);
     }

@@ -193,7 +193,7 @@ public class Opportunite implements Comparable<Opportunite>{
 
     @Override
     public String toString() {
-        return this.getContact().getNom()+" - "+this.getContact().getSociete().getNom()+" - "+this.getDetail();
+        return this.getContact().toString()+" - "+this.getDetail();
     }
 
     @Override

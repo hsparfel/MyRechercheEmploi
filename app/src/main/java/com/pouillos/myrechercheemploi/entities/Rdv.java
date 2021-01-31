@@ -12,7 +12,9 @@ import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.ToOne;
 import org.greenrobot.greendao.converter.PropertyConverter;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.pouillos.myrechercheemploi.enumeration.TypeRdv;
 
@@ -207,12 +209,22 @@ public class Rdv implements Comparable<Rdv>{
 
     @Override
     public String toString() {
-        return this.getContact().getNom()+" - "+this.getContact().getSociete().getNom()+" - "+this.getDateString();
+        return this.getContact().toString()+" - "+this.getDateString();
     }
 
     @Override
     public int compareTo(Rdv o) {
         return this.date.compareTo(o.date);
+    }
+
+    static public List<Rdv> listerRdvFuturs (List<Rdv> listToReduce, Date date) {
+        List<Rdv> myList = new ArrayList<Rdv>();
+        for (Rdv rdv:listToReduce){
+            if (rdv.getDate().after(date)) {
+                myList.add(rdv);
+            }
+        }
+        return myList;
     }
 
 }
