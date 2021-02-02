@@ -14,6 +14,7 @@ import com.pouillos.myrechercheemploi.entities.Societe;
 import com.pouillos.myrechercheemploi.recycler.adapter.RecyclerAdapterSociete;
 import com.pouillos.myrechercheemploi.utils.ItemClickSupport;
 
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -46,7 +47,7 @@ public class AfficherListeSocietesActivity extends NavDrawerActivity implements 
 
         // traiterIntent();
         listSocietesBD = societeDao.loadAll();
-
+        Collections.sort(listSocietesBD);
         // 6 - Configure all views
         this.configureToolBar();
         this.configureDrawerLayout();

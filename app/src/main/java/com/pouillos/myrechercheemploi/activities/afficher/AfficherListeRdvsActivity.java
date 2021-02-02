@@ -13,6 +13,7 @@ import com.pouillos.myrechercheemploi.entities.Rdv;
 import com.pouillos.myrechercheemploi.recycler.adapter.RecyclerAdapterRdv;
 import com.pouillos.myrechercheemploi.utils.ItemClickSupport;
 
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -44,7 +45,7 @@ public class AfficherListeRdvsActivity extends NavDrawerActivity implements Recy
 
         // traiterIntent();
         listRdvsBD = rdvDao.loadAll();
-
+        Collections.sort(listRdvsBD);
         // 6 - Configure all views
         this.configureToolBar();
         this.configureDrawerLayout();

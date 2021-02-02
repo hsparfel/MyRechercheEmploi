@@ -1,6 +1,5 @@
 package com.pouillos.myrechercheemploi.entities;
 
-import com.pouillos.myrechercheemploi.enumeration.AvancementSociete;
 import com.pouillos.myrechercheemploi.enumeration.TypeSociete;
 
 import org.greenrobot.greendao.annotation.Convert;
@@ -9,8 +8,6 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.converter.PropertyConverter;
 import org.greenrobot.greendao.annotation.Generated;
-
-import java.util.List;
 
 @Entity
 public class Societe implements Comparable<Societe> {
@@ -23,9 +20,9 @@ public class Societe implements Comparable<Societe> {
 
     private String adresse;
 
-    private String Cp;
+    private String cp;
 
-    private String Ville;
+    private String ville;
 
     @Convert(converter = TypeSocieteConverter.class, columnType = Long.class)
     private TypeSociete typeSociete;
@@ -37,16 +34,16 @@ public class Societe implements Comparable<Societe> {
     private boolean hasEntretienAffaire;
     private boolean hasTestTechnique;
 
-    @Generated(hash = 1958220491)
-    public Societe(Long id, @NotNull String nom, String adresse, String Cp, String Ville,
+    @Generated(hash = 1627738957)
+    public Societe(Long id, @NotNull String nom, String adresse, String cp, String ville,
             TypeSociete typeSociete, boolean hasPremierContact, boolean hasEntretienRh,
             boolean hasEntretienTechnique, boolean hasEntretienManager,
             boolean hasEntretienAffaire, boolean hasTestTechnique) {
         this.id = id;
         this.nom = nom;
         this.adresse = adresse;
-        this.Cp = Cp;
-        this.Ville = Ville;
+        this.cp = cp;
+        this.ville = ville;
         this.typeSociete = typeSociete;
         this.hasPremierContact = hasPremierContact;
         this.hasEntretienRh = hasEntretienRh;
@@ -59,6 +56,8 @@ public class Societe implements Comparable<Societe> {
     @Generated(hash = 1926605167)
     public Societe() {
     }
+
+    
 
 
     public static class TypeSocieteConverter implements PropertyConverter<TypeSociete, Long> {
@@ -118,19 +117,19 @@ public class Societe implements Comparable<Societe> {
     }
 
     public String getCp() {
-        return this.Cp;
+        return this.cp;
     }
 
     public void setCp(String Cp) {
-        this.Cp = Cp;
+        this.cp = Cp;
     }
 
     public String getVille() {
-        return this.Ville;
+        return this.ville;
     }
 
     public void setVille(String Ville) {
-        this.Ville = Ville;
+        this.ville = Ville;
     }
 
     public TypeSociete getTypeSociete() {

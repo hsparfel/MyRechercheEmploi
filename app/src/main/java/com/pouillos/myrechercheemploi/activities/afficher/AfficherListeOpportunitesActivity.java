@@ -13,6 +13,7 @@ import com.pouillos.myrechercheemploi.entities.Opportunite;
 import com.pouillos.myrechercheemploi.recycler.adapter.RecyclerAdapterOpportunite;
 import com.pouillos.myrechercheemploi.utils.ItemClickSupport;
 
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -44,7 +45,7 @@ public class AfficherListeOpportunitesActivity extends NavDrawerActivity impleme
 
         // traiterIntent();
         listOpportunitesBD = opportuniteDao.loadAll();
-
+        Collections.sort(listOpportunitesBD);
         // 6 - Configure all views
         this.configureToolBar();
         this.configureDrawerLayout();

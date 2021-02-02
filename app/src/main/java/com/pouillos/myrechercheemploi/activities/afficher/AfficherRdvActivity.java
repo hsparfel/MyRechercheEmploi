@@ -1,7 +1,9 @@
 package com.pouillos.myrechercheemploi.activities.afficher;
 
 import android.app.TimePickerDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -51,6 +53,9 @@ public class AfficherRdvActivity extends NavDrawerActivity implements Serializab
     FloatingActionButton fabSave;
     @BindView(R.id.fabDelete)
     FloatingActionButton fabDelete;
+
+    @BindView(R.id.fabWaze)
+    FloatingActionButton fabWaze;
 
     Rdv rdv;
     TypeRdv typeRdv;
@@ -110,7 +115,7 @@ public class AfficherRdvActivity extends NavDrawerActivity implements Serializab
         runner.execute();
 
         fabDelete.hide();
-
+        fabWaze.hide();
 
 
         selectedContact.setOnItemClickListener(this);
@@ -148,6 +153,19 @@ public class AfficherRdvActivity extends NavDrawerActivity implements Serializab
             calendar.add(Calendar.HOUR_OF_DAY, Integer.parseInt(DateUtils.ecrireJusteHeure(currentRdv.getDate())));
             calendar.add(Calendar.MINUTE, Integer.parseInt(DateUtils.ecrireJusteMinute(currentRdv.getDate())));
             date = calendar.getTime();
+            //afficher ou non le bouton waze
+            boolean isWazed = true;
+            if (currentRdv.getTypeRdv() != TypeRdv.Site) {
+                isWazed = false;
+            } else
+            if (currentRdv.getContact().getSociete().getAdresse().toString().equalsIgnoreCase("")
+            || currentRdv.getContact().getSociete().getCp().toString().equalsIgnoreCase("")
+            || currentRdv.getContact().getSociete().getVille().toString().equalsIgnoreCase("")) {
+                isWazed = false;
+            }
+            if (isWazed) {
+                fabWaze.show();
+            }
         }
     }
 
@@ -181,6 +199,24 @@ public class AfficherRdvActivity extends NavDrawerActivity implements Serializab
             rdvDao.delete(currentRdv);
         }
         ouvrirActiviteSuivante(AfficherRdvActivity.this, AccueilActivity.class,false);
+    }
+
+
+
+    @OnClick(R.id.fabWaze)
+    public void fabWazeClick() {
+        try
+        {
+            String url = "https://waze.com/ul?q=";
+            url += contactSelected.getSociete().getAdresse()+"%20"+contactSelected.getSociete().getCp()+"%20"+contactSelected.getSociete().getVille();
+            Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( url ) );
+            startActivity( intent );
+        }
+        catch ( ActivityNotFoundException ex  )
+        {
+            Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( "market://details?id=com.waze" ) );
+            startActivity(intent);
+        }
     }
 
     private boolean isFullRempli() {
